@@ -1,0 +1,20 @@
+laravel: '@testbench'
+
+providers:
+  - Boeq\Uat\ServiceProvider
+  - Workbench\App\Providers\WorkbenchServiceProvider
+
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: '/orders'
+  install: true
+  user: 1
+  discovers:
+    web: true
+    views: true
+  build:
+    - create-sqlite-db
+    - db-wipe
+    - migrate-fresh

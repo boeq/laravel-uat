@@ -1,0 +1,76 @@
+{
+    "name": "boeq/laravel-uat",
+    "description": "User acceptance testing inside your Laravel application",
+    "type": "package",
+    "license": "MIT",
+    "homepage": "https://github.com/boeq/laravel-uat",
+    "keywords": [
+        "laravel",
+        "uat",
+        "acceptance testing"
+    ],
+    "authors": [
+        {
+            "name": "Vincent Boon",
+            "email": "vincent@boeq.ai",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^12.0|^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.10",
+        "laravel/pint": "^1.29",
+        "orchestra/testbench": "^10.11|^11.0",
+        "phpstan/phpstan-mockery": "^2.0",
+        "phpunit/phpunit": "^12.5|^13.0",
+        "rector/rector": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Boeq\\Uat\\": "src",
+            "Boeq\\Uat\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Boeq\\Uat\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse --memory-limit=256M",
+        "style": "pint --test",
+        "fixes": "pint",
+        "rector": "rector process --dry-run",
+        "coverage": "XDEBUG_MODE=coverage php -d memory_limit=2G vendor/bin/phpunit --coverage-text --only-summary-for-coverage-text | grep -c \"100.00%\" | grep -q \"^3$\" && exit 0 || exit 1",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/bin/testbench workbench:build --ansi",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "quality": [
+            "@style",
+            "@analyse",
+            "@test",
+            "@coverage",
+            "@rector"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Boeq\\Uat\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
