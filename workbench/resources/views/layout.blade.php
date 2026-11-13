@@ -8,11 +8,11 @@
 
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </head>
-    <body class="bg-gray-50 text-gray-900">
-        <nav class="flex items-center gap-6 border-b border-gray-200 bg-white px-6 py-4">
+    <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+        <nav class="flex items-center gap-6 border-b border-gray-200 bg-white px-6 py-4 dark:border-gray-800 dark:bg-gray-900">
             <a href="/orders" class="font-semibold">Laravel UAT demo</a>
 
-            <span class="ml-auto">
+            <span class="ml-auto text-sm">
                 @auth
                     {{ auth()->user()->name }} &middot; <a href="/_workbench/logout" class="underline">Log out</a>
                 @else

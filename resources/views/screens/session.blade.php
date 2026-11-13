@@ -14,9 +14,19 @@
 
         <h2 class="text-base font-semibold">{{ $translation->title }}</h2>
 
-        <progress class="h-2 w-full accent-indigo-600" value="{{ $judged->count() }}" max="{{ $session->steps->count() }}">
-            {{ $judged->count() }}/{{ $session->steps->count() }}
-        </progress>
+        <div
+            role="progressbar"
+            aria-label="{{ $judged->count() }}/{{ $session->steps->count() }}"
+            aria-valuemin="0"
+            aria-valuemax="{{ $session->steps->count() }}"
+            aria-valuenow="{{ $judged->count() }}"
+            class="h-2 w-full overflow-hidden rounded-full bg-gray-200 text-indigo-600 dark:bg-gray-700 dark:text-indigo-400"
+        >
+            {{-- The width comes from the viewBox, so the bar needs no inline style and works under a strict CSP. --}}
+            <svg class="h-full w-full" viewBox="0 0 {{ $session->steps->count() }} 1" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">
+                <rect width="{{ $judged->count() }}" height="1" />
+            </svg>
+        </div>
     </header>
 
     <details class="border-b border-gray-200 px-4 py-3 dark:border-gray-700" @if ($judged->isEmpty()) open @endif>

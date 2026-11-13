@@ -13,6 +13,28 @@ Each step gets a verdict: accepted, or feedback with a description. A developer 
 
 An AI agent can also write the test steps. The package includes a skill that tells the agent how to do this.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/screenshot-session-dark.png">
+  <img src=".github/assets/screenshot-session-light.png" alt="The bubble on a page of the application. It shows the first step of a scenario, with the instruction, the expected result and the two verdicts." width="100%">
+</picture>
+
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/screenshot-list-dark.png">
+    <img src=".github/assets/screenshot-list-light.png" alt="The list of scenarios in the bubble. Each scenario shows the number of steps and the status of the tester." width="32%">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/screenshot-feedback-dark.png">
+    <img src=".github/assets/screenshot-feedback-light.png" alt="The feedback form of a step. The tester writes what went wrong." width="32%">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/screenshot-completed-dark.png">
+    <img src=".github/assets/screenshot-completed-light.png" alt="The list after the tester completed a scenario. A link below the list shows the completed scenario." width="32%">
+  </picture>
+</p>
+
+From left to right: the list of scenarios, the feedback for a step, and the completed scenarios of the tester.
+
 ```
 agent ──HTTPS API──▶ laravel-uat ──bubble──▶ tester
                        │
